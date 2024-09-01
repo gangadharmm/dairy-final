@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Milk Farm</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/6244267947.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <img class="logo-image" src="images/my-farm.png" alt="logo-image" />
+      <ul>
+        <li class="item"><a href="#home">Home</a></li>
+        <li class="item"><a href="contact.html">Contact Us</a></li>
+        <li class="item"><a href="about.html">About Us</a></li>
+        <li class="item cart-icon">
+          <a href="cart.html">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!--Home sections-->
+    <section id="home" class="home">
+      <div>
+        <h1>DISCOVER THE PUREST TASTE OF NATURE</h1>
+        <br />
+        <p>
+          Welcome to My Milk Farm, where nature's bounty comes to life in every
+          drop of milk.
+        </p>
+        <p>Start your day with the purest essence of nature.</p>
+        <p>
+          Experience the joy of farm-fresh milk delivered right to your
+          doorstep.
+        </p>
+        <p>
+          From our happy and healthy cows to your breakfast table, we ensure
+          only the best reaches your family.
+        </p>
+      </div>
+      <img class="cow" src="images/cute_cow.png" alt="" />
+    </section>
+
+    <!--Delivery-process sections-->
+    <section class="delivery-process">
+      <div class="milk">
+        <img class="milk-img" src="images/fresh milk.png" alt="" height="200" />
+        <h3>Fresh Milk</h3>
+        <br />
+        <p>Enjoy our carefully collected and quality-checked fresh milk.</p>
+      </div>
+
+      <div class="curd">
+        <img class="curd-img" src="images/curd-pouch.png" alt="" height="160" />
+        <h3>Fresh Curd</h3>
+        <br />
+        <p>Savor our healthy and delicious farm-fresh curd.</p>
+      </div>
+
+      <div class="delivry-girl">
+        <img
+          class="delivery-girl-img"
+          src="images/delivery-pic.png"
+          alt=""
+          height=""
+        />
+        <h3>Safe Delivery</h3>
+        <br />
+        <p>Our safe delivery process for a hygienic product at your door.</p>
+      </div>
+    </section>
+
+    <!--Product sections-->
+    <section class="product">
+      <h2>Milk Product</h2>
+      <section class="product-container">
+        <div class="all-milk product-item">
+          <img
+            style="background-position: center"
+            class="all-milk-img"
+            src="images/paneer.jpg"
+            alt="Paneer"
+            height="400"
+          />
+          <hr />
+          <h3>Paneer</h3>
+          <br />
+          <p>
+            Paneer is an unaged, acid-set, non-melting farmer cheese made by
+            curdling heated milk with lemon juice or other non-rennet food acid,
+            and then removing the whey and pressing the result into a dry unit.
+          </p>
+          <p><strong>Price:</strong> ₹250.99 per 100g</p>
+          <button class="btn" onclick="addToCart('Paneer', 250.99, 100)">
+            Add to Cart
+          </button>
+        </div>
+
+        <div class="low-fat-milk product-item">
+          <img
+            class="low-fat-img"
+            src="images/skim milk.jpg"
+            alt=""
+            height="200"
+          />
+          <hr />
+          <h3>Milk</h3>
+          <br />
+          <p>
+            Milk is a white liquid food produced by the mammary glands of
+            mammals. It is the primary source of nutrition for young mammals
+            before they are able to digest solid food.
+          </p>
+          <p><strong>Price:</strong> ₹45.99 per liter</p>
+          <button class="btn" onclick="addToCart('Milk', 45.99, 1000)">
+            Add to Cart
+          </button>
+        </div>
+
+        <div class="other-milk product-item">
+          <img
+            class="other-milk-img"
+            src="images/butter.png"
+            alt=""
+            height="200"
+          />
+          <hr />
+          <h3>Butter</h3>
+          <br />
+          <p>
+            Butter is a high-fat dairy food made from churned milk or cream,
+            commonly used as a spread or for pan-frying.
+          </p>
+          <p><strong>Price:</strong> ₹350.49 per 250g</p>
+          <button class="btn" onclick="addToCart('Butter', 350.49, 250)">
+            Add to Cart
+          </button>
+        </div>
+
+        <div class="all-curd product-item">
+          <img
+            class="all-curd-img"
+            src="images/Butter-Milk-1.webp"
+            alt=""
+            height="200"
+          />
+          <hr />
+          <h3>Butter Milk</h3>
+          <br />
+          <p>
+            Buttermilk is not as famous as its namesakes, butter and milk, but
+            it is an interesting, sour-tasting dairy product.
+          </p>
+          <p><strong>Price:</strong> ₹29.99</p>
+          <button class="btn" onclick="addToCart('Butter Milk', 29.99, 500)">
+            Add to Cart
+          </button>
+        </div>
+
+        <div class="all-curd product-item">
+          <img
+            class="all-curd-img"
+            src="images/cheese.jpg"
+            alt=""
+            height="200"
+          />
+          <hr />
+          <h3>Cheese</h3>
+          <br />
+          <p>Cheese is a delicious and popular food enjoyed worldwide.</p>
+          <p><strong>Price:</strong> ₹250.99 per 200g</p>
+          <button class="btn" onclick="addToCart('Cheese', 250.99, 200)">
+            Add to Cart
+          </button>
+        </div>
+
+        <div class="all-curd product-item">
+          <img class="all-curd-img" src="images/Ghee.jpg" alt="" height="200" />
+          <hr />
+          <h3>Ghee</h3>
+          <br />
+          <p>
+            This dairy product is a higher-fat, richer, and creamier version of
+            butter, renowned for its great taste.
+          </p>
+          <p><strong>Price:</strong> ₹300.99 per 500g</p>
+          <button class="btn" onclick="addToCart('Ghee', 300.99, 500)">
+            Add to Cart
+          </button>
+        </div>
+
+        <div class="all-curd product-item">
+          <img
+            class="all-curd-img"
+            src="images/Lassi12.jpeg"
+            alt=""
+            height="200"
+          />
+          <hr />
+          <h3>Lassi</h3>
+          <br />
+          <p>
+            Lassi is a Punjabi yogurt–based beverage with a smoothie-like
+            consistency. It has been called "the most popular and traditional
+            yogurt-based drink" in India.
+          </p>
+          <p><strong>Price:</strong> ₹30.49</p>
+          <button class="btn" onclick="addToCart('Lassi', 30.49, 500)">
+            Add to Cart
+          </button>
+        </div>
+
+        <div class="all-curd product-item">
+          <img
+            class="all-curd-img"
+            src="images/curd1.jpg"
+            alt=""
+            height="200"
+          />
+          <hr />
+          <h3>Curd</h3>
+          <br />
+          <p>
+            Curd is obtained by coagulating milk in a sequential process called
+            curdling. It can be a final dairy product or the first stage in
+            cheesemaking.
+          </p>
+          <p><strong>Price:</strong> ₹29.99 per 500g</p>
+          <button class="btn" onclick="addToCart('Curd', 29.99, 500)">
+            Add to Cart
+          </button>
+        </div>
+      </section>
+    </section>
+
+    <hr />
+
+    <!--Guaranteed sections-->
+    <section class="guaranteed-section">
+      <h1>We Guarantee You</h1>
+      <div class="watch">
+        <img src="images/hand watch.png" alt="watch image" height="230" />
+        <p>On-time every time guaranteed</p>
+      </div>
+      <div class="mIlk">
+        <img
+          src="images\bottle milk.jpeg"
+          alt="milk bottle image"
+          height="220"
+        />
+        <p>Fresh milk, curd, and butter every day</p>
+      </div>
+      <div class="quality">
+        <img src="images\quality image.jpeg" alt="quality image" height="220" />
+        <p>We always maintain the highest quality standards</p>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Us</h4>
+          <p>
+            My Milk Farm offers the finest quality dairy products straight from
+            our farm to your table.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <p>Email: info@mymilkfarm.com</p>
+          <p>Phone: +91 123 456 7890</p>
+        </div>
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <p>
+            <a href="#">Facebook</a> | <a href="#">Twitter</a> |
+            <a href="#">Instagram</a>
+          </p>
+        </div>
+      </div>
+      <p>&copy; 2024 My Milk Farm. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      function addToCart(name, price, weight) {
+        // Create an object for the product
+        const product = {
+          name: name,
+          price: price,
+          weight: weight,
+          quantity: 1,
+        };
+
+        // Get existing cart from localStorage
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Check if product already exists in the cart
+        const existingProductIndex = cart.findIndex(
+          (item) => item.name === name
+        );
+
+        if (existingProductIndex !== -1) {
+          // Increase quantity if the product is already in the cart
+          cart[existingProductIndex].quantity += 1;
+          // Check if the item's total price is less than ₹100, and adjust quantity if necessary
+          const itemTotalPrice =
+            cart[existingProductIndex].price *
+            cart[existingProductIndex].quantity;
+          if (itemTotalPrice < 100) {
+            const minQuantity = Math.ceil(100 / price);
+            cart[existingProductIndex].quantity = minQuantity;
+          }
+        } else {
+          // Add new product to cart
+          cart.push(product);
+        }
+
+        // Save the updated cart back to localStorage
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Update cart count
+        updateCartCount();
+      }
+
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const totalQuantity = cart.reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+        document.getElementById("cart-count").textContent = totalQuantity;
+      }
+
+      // Update cart count on page load
+      document.addEventListener("DOMContentLoaded", updateCartCount);
+    </script>
+  </body>
+</html>
+

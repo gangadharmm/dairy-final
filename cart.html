@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="css/cart.css" />
+    <style>
+      /* Include your existing styles or add new ones here */
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+        padding: 0;
+        margin: 0;
+      }
+      header {
+        text-align: center;
+        padding: 1rem;
+        background-color: #f4f4f4;
+      }
+      #cart-container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+      .cart-item {
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+      }
+      .cart-total {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+      }
+      .final-amount {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 1.5rem;
+        text-align: center;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 1rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Your Shopping Cart</h1>
+    </header>
+    <main>
+      <div id="cart-container">
+        <h2>Cart Items</h2>
+        <div id="cart-items"></div>
+        <p class="cart-total">
+          Total: ₹<span id="cart-total-price">0.00</span><br />
+          Delivery Charge: ₹<span id="delivery-charge">0.00</span>
+        </p>
+        <!-- Final Amount Section -->
+        <p class="final-amount">
+          Final Amount: ₹<span id="final-amount">0.00</span>
+        </p>
+        <button onclick="proceedToPayment()">Proceed to Payment</button>
+      </div>
+    </main>
+    <script>
+      function displayCartItems() {
+        const cartContainer = document.getElementById("cart-items");
+        const cartTotalPriceElement = document.getElementById("cart-total-price");
+        const deliveryChargeElement = document.getElementById("delivery-charge");
+        const finalAmountElement = document.getElementById("final-amount");
+
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cartContainer.innerHTML = ""; // Clear previous items
+        let totalPrice = 0;
+
+        if (cart.length === 0) {
+          cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+        } else {
+          cart.forEach((item, index) => {
+            const itemTotalPrice = item.price * item.quantity;
+            totalPrice += itemTotalPrice;
+
+            cartContainer.innerHTML += `
+              <div class="cart-item">
+                  <h4>${item.name}</h4>
+                  <p>Price: ₹${item.price} per ${item.weight}g</p>
+                  <p>Quantity: ${item.quantity}</p>
+                  <p>Total: ₹${itemTotalPrice.toFixed(2)}</p>
+                  <button onclick="removeFromCart(${index})">Remove</button>
+              </div>
+              <hr />
+            `;
+          });
+        }
+
+        // Determine delivery charge based on total price
+        const deliveryCharge = totalPrice < 200 ? 29 : 0;
+        cartTotalPriceElement.textContent = totalPrice.toFixed(2);
+        deliveryChargeElement.textContent = deliveryCharge.toFixed(2);
+
+        // Calculate final amount
+        const finalAmount = totalPrice + deliveryCharge;
+        finalAmountElement.textContent = finalAmount.toFixed(2);
+
+        // Store final amount in local storage for use in payment page
+        localStorage.setItem("finalAmount", finalAmount.toFixed(2));
+      }
+
+      function removeFromCart(index) {
+        // Get existing cart from localStorage
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Remove item at specified index
+        cart.splice(index, 1);
+
+        // Save the updated cart back to localStorage
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Redisplay the cart items
+        displayCartItems();
+      }
+
+      function proceedToPayment() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        if (cart.length === 0) {
+          alert("Your cart is empty. Please add items to your cart before proceeding to payment.");
+          return;
+        }
+
+        // Store the final amount in localStorage
+        const finalAmount = parseFloat(document.getElementById("final-amount").textContent);
+        localStorage.setItem("finalAmount", finalAmount.toFixed(2));
+
+        // Redirect to the payment page
+        window.location.href = "payment.html";
+      }
+
+      document.addEventListener("DOMContentLoaded", displayCartItems);
+    </script>
+  </body>
+</html>
